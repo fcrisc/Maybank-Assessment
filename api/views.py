@@ -3,6 +3,7 @@ from django.shortcuts import render
 from geopy.geocoders import Nominatim
 from datetime import datetime
 import pytz
+from .forms import DateTimeForm
 
 
 import requests
@@ -27,5 +28,11 @@ def apiOverview(request):
         'longitude': longitude,
         'location': location,
         }
+    
+    context['form'] = DateTimeForm()
+    
+    if request.POST:
+        temp = request.POST['dateTime_input']
+        print(type(temp))
     
     return render(request, 'api/iss-location.html', context)

@@ -1,7 +1,65 @@
+{% extends 'api/base.html' %}
 
-  <h2>ISS API</h2>
-  <p>Your datetime is <strong>{{ iss_datetime }}</strong>, 
-    and the latitude is <strong>{{ latitude }}</strong> 
-    and the longitude is {{ longitude }}
-    test {{location}}
- </p>
+{% block content %}
+
+{% load static %}
+
+
+ <!-- Header - set the background image for the header in the line below-->
+ <header class="py-5 bg-image-full" id="extension" style="background-image: url('https://source.unsplash.com/wfh8dDlNFOk/1600x900')">
+    <div class="text-center my-5">
+        <h1 class="text-white fs-3 fw-bolder">{{ iss_datetime }}</h1>
+        <p class="text-white mb-0">Latitude: {{ latitude }}, Longitude: {{ longitude }}</p>
+        <p class="text-white mb-0">{{ location }}</p>
+    </div>
+</header>
+ <!-- Content section-->
+ <section class="py-5" id="task">
+    <div class="container my-5">
+        <div class="row justify-content-center mb-3">
+            <div class="col-lg-8">
+                <h2>International Space Station (ISS)</h2>
+                <p class="lead">Task: Getting the location of the ISS at a specific time</p>
+                <p class="mb-0">Create a simple web or command line application that allows users to enter a past date and time and 
+                    receive the city the ISS was over at that moment, as well as its location every ten minutes before 
+                    and after that for an hour.</p>
+                <form method = "POST">
+                    {% csrf_token %}
+                    {% load crispy_forms_tags %}
+                    {{ form }}
+                    <input type = "submit" value = "Submit">
+                </form>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+        <table class="table table-sm">
+            <thead class="table-warning">
+              <tr>
+                <th scope="col">Date Time</th>
+                <th scope="col">Latitude</th>
+                <th scope="col">Longitude</th>
+                <th scope="col">Location</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td></td>
+                <td></td>
+                <td></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+    </div>
+</section>
+<!-- Image element - set the background image for the header in the line below-->
+<div class="py-5 bg-image-full" style="background-image: url('https://source.unsplash.com/4ulffa6qoKA/1200x800')">
+    <!-- Put anything you want here! The spacer below with inline CSS is just for demo purposes!-->
+    <div style="height: 20rem"></div>
+</div>
+
+
+
+{% endblock content %}
+
