@@ -14,43 +14,60 @@
     </div>
 </header>
  <!-- Content section-->
- <section class="py-5" id="task">
+ <section class="py-2" id="task">
     <div class="container my-5">
-        <div class="row justify-content-center mb-3">
+        <div class="row mb-3">
             <div class="col-lg-8">
-                <h2>International Space Station (ISS)</h2>
-                <p class="lead">Task: Getting the location of the ISS at a specific time</p>
-                <p class="mb-0">Create a simple web or command line application that allows users to enter a past date and time and 
-                    receive the city the ISS was over at that moment, as well as its location every ten minutes before 
-                    and after that for an hour.</p>
+                <div class="card shadow-lg">  
+                <div class="card-body p-4">
+                <p class="alert alert-warning"><b> Getting the location of the ISS at a specific time</b></p>
                 <form method = "POST">
                     {% csrf_token %}
-                    {% load crispy_forms_tags %}
-                    {{ form }}
-                    <input type = "submit" value = "Submit">
+                    <div class="form-group">
+                        <!-- <label for="datetime" class="mb-3">Date & Time</label>
+                        <span>
+                        <input type="text" class="form-control mb-3 without_ampm" name="datetime" id="datetime" placeholder="Choose Date & Time" required>
+                        </span> -->
+                        <label for="datetime" class="mb-3">Date</label>
+                        <input type="date" class="form-control mb-3 " name="date"  placeholder="Date" required>
+                        <label for="datetime" class="mb-3">Time</label>
+                        <input type="time" class="form-control mb-3 " name="time"  placeholder="Time" required>
+                        <button type="submit" class="btn btn-warning" style="float:right" >Display</button>
+                    </div>
                 </form>
+                </div>
+            </div>
+            </div>
+            <div class="col-lg-4">
+
+            <div class="card shadow-lg">
+                <div class="card-body p-4">
+                <table class="table table-sm table-borderless">
+                    <tbody>
+                        <tr>
+                            <td> <span class="font-weight-bold">Timestamp: {{ iss_datetime_details }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <span class="font-weight-bold">City:{{ location_details }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <span class="font-weight-bold">Latitude: {{ latitude_details }}</span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td> <span class="font-weight-bold">Longitude: {{ longitude_details }}</span>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+                
             </div>
         </div>
-        <div class="row justify-content-center">
-        <table class="table table-sm">
-            <thead class="table-warning">
-              <tr>
-                <th scope="col">Date Time</th>
-                <th scope="col">Latitude</th>
-                <th scope="col">Longitude</th>
-                <th scope="col">Location</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td></td>
-                <td></td>
-                <td></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        
     </div>
 </section>
 <!-- Image element - set the background image for the header in the line below-->
@@ -58,6 +75,13 @@
     <!-- Put anything you want here! The spacer below with inline CSS is just for demo purposes!-->
     <div style="height: 20rem"></div>
 </div>
+
+<script>
+    $(function () {
+        $('#datetime').datetimepicker();
+        Date
+        });
+</script>
 
 
 
