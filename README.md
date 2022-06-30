@@ -1,4 +1,4 @@
-# Maybank-Assessment
+# MBB-Assessment
 International Space Station (ISS) Locator
 
 This Project uses Django Framework
